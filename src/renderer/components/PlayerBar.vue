@@ -91,6 +91,16 @@
       </div>
       <div class="right">
         <button-icon
+          :class="{
+            disabled: currentTrack === null || currentTrack?.type !== 'online',
+            active: downloadStatus === 'downloading' || downloadStatus === 'downloaded'
+          }"
+          :title="$t('player.download')"
+          @click.stop=""
+        >
+          <svg-icon icon-class="onTop" style="transform: rotate(180deg); display: inline-block" />
+        </button-icon>
+        <button-icon
           :title="$t('player.nextUp')"
           :class="{
             active: route.name === 'next',
